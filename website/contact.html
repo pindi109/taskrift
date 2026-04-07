@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Taskrift</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0A0A0F;color:#FFFFFF;font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #27272A}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-icon{width:36px;height:36px;background:#18181B;border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid #27272A}
+.nav-logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;color:#FFFFFF}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{color:#A1A1AA;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:#FFFFFF}
+.nav-cta{background:linear-gradient(135deg,#7C3AED,#3B82F6);color:#FFFFFF;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600}
+.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#FFFFFF}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#0A0A0F;border-bottom:1px solid #27272A;padding:20px 24px;z-index:99;flex-direction:column;gap:16px}
+.mobile-menu a{color:#A1A1AA;font-size:15px;font-weight:500;padding:8px 0;border-bottom:1px solid #27272A}
+.mobile-menu .nav-cta{text-align:center;margin-top:8px}
+
+.page-header{padding:120px 24px 60px;text-align:center;border-bottom:1px solid #27272A}
+.page-header .badge{display:inline-flex;align-items:center;gap:8px;background:#18181B;border:1px solid #27272A;border-radius:100px;padding:6px 16px;margin-bottom:24px;font-size:13px;color:#A1A1AA}
+.page-header h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px}
+.page-header p{color:#A1A1AA;font-size:16px;max-width:480px;margin:0 auto}
+
+.contact-wrapper{max-width:1100px;margin:0 auto;padding:72px 24px 100px}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start}
+
+/* LEFT COLUMN */
+.contact-info{display:flex;flex-direction:column;gap:32px}
+.contact-info-card{background:#18181B;border:1px solid #27272A;border-radius:16px;padding:28px}
+.contact-info-card h3{font-size:16px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.contact-info-card h3 span{font-size:20px}
+.contact-item{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+.contact-item:last-child{margin-bottom:0}
+.contact-item-label{font-size:12px;color:#A1A1AA;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.contact-item-value{font-size:15px;color:#FFFFFF;font-weight:500}
+.contact-item-value a{color:#10B981;transition:opacity 0.2s}
+.contact-item-value a:hover{opacity:0.8}
+.status-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:100px;padding:4px 12px;font-size:12px;color:#10B981;font-weight:600}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#10B981;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #27272A;font-size:14px}
+.hours-row:last-child{border-bottom:none}
+.hours-day{color:#A1A1AA}
+.hours-time{color:#FFFFFF;font-weight:500}
+
+/* FORM */
+.contact-form-card{background:#18181B;border:1px solid #27272A;border-radius:20px;padding:40px}
+.contact-form-card h2{font-size:24px;font-weight:700;margin-bottom:8px}
+.contact-form-card .subtitle{color:#A1A1AA;font-size:15px;margin-bottom:32px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.form-group label{font-size:13px;font-weight:600;color:#FFFFFF;text-transform:uppercase;letter-spacing:0.5px}
+.form-group input,.form-group textarea,.form-group select{background:#0A0A0F;border:1px solid #27272A;border-radius:10px;padding:13px 16px;color:#FFFFFF;font-size:15px;font-family:'Inter',sans-serif;transition:border-color 0.2s,box-shadow 0.2s;width:100%;outline:none;-webkit-appearance:none;appearance:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:#7C3AED;box-shadow:0 0 0 3px rgba(124,58,237,0.15)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#A1A1AA}
+.form-group textarea{resize:vertical;min-height:140px;line-height:1.6}
+.form-group select{cursor:pointer}
+.form-group select option{background:#18181B;color:#FFFFFF}
+.form-submit{width:100%;background:linear-gradient(135deg,#7C3AED,#3B82F6);color:#FFFFFF;border:none;padding:15px 32px;border-radius:10px;font-size:16px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:opacity 0.2s,transform 0.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.form-submit:hover{opacity:0.9;transform:translateY(-1px)}
+.form-success{display:none;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:20px;text-align:center;color:#10B981;font-weight:600;margin-top:16px}
+.form-note{font-size:12px;color:#A1A1AA;text-align:center;margin-top:16px}
+
+/* FAQ */
+.faq-section{margin-top:80px}
+.faq-section h2{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-0.5px;text-align:center;margin-bottom:8px}
+.faq-section .faq-sub{color:#A1A1AA;text-align:center;font-size:16px;margin-bottom:48px}
+.faq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.faq-item{background:#18181B;border:1px solid #27272A;border-radius:14px;overflow:hidden}
+.faq-question{width:100%;background:none;border:none;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;padding:22px 24px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:color 0.2s}
+.faq-question:hover{color:#10B981}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:#27272A;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.3s,background 0.2s}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(124,58,237,0.3)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s}
+.faq-answer-inner{padding:0 24px 20px;color:#A1A1AA;font-size:14px;line-height:1.8}
+.faq-item.open .faq-answer{max-height:300px}
+
+footer{background:#18181B;border-top:1px solid #27272A;padding:40px 24px}
+.footer-bottom-simple{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-copy{color:#A1A1AA;font-size:13px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:#A1A1AA;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:#FFFFFF}
+
+@media(max-width:900px){
+.contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+.nav-links{display:none}
+.nav-mobile-toggle{display:block}
+.mobile-menu.open{display:flex}
+.form-row{grid-template-columns:1fr}
+.contact-form-card{padding:28px 20px}
+.footer-bottom-simple{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs><path d="M4 10.5L8 15L16 5" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="nav-logo-text">Taskrift</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Get Started</a>
+    </div>
+    <button class="nav-mobile-toggle" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html#features">Features</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta">Get Started</a>
+</div>
+
+<div class="page-header">
+  <div class="badge">💬 Get in touch</div>
+  <h1>We'd love to hear from you.</h1>
+  <p>Have a question, feedback, or want to report a bug? We're here to help.</p>
+</div>
+
+<div class="contact-wrapper">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-info-card">
+        <h3><span>📬</span> Contact Details</h3>
+        <div class="contact-item">
+          <div class="contact-item-label">General Support</div>
+          <div class="contact-item-value"><a href="mailto:hello@taskrift.app">hello@taskrift.app</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">Privacy &amp; Data</div>
+          <div class="contact-item-value"><a href="mailto:privacy@taskrift.app">privacy@taskrift.app</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">Security Issues</div>
+          <div class="contact-item-value"><a href="mailto:security@taskrift.app">security@taskrift.app</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">Status</div>
+          <div class="contact-item-value"><div class="status-badge"><div class="status-dot"></div>All systems operational</div></div>
+        </div>
+      </div>
+
+      <div class="contact-info-card">
+        <h3><span>🕐</span> Support Hours</h3>
+        <div class="hours-row"><span class="hours-day">Monday – Friday</span><span class="hours-time">9am – 6pm GMT</span></div>
+        <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">10am – 2pm GMT</span></div>
+        <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">Closed</span></div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid #27272A">
+          <div class="contact-item-label" style="margin-bottom:8px">Typical Response Time</div>
+          <div style="font-size:15px;color:#FFFFFF;font-weight:600">Within 24 hours on weekdays</div>
+        </div>
+      </div>
+
+      <div class="contact-info-card">
+        <h3><span>🔗</span> Connect</h3>
+        <div class="contact-item">
+          <div class="contact-item-label">Twitter / X</div>
+          <div class="contact-item-value"><a href="#" style="color:#10B981">@taskrift</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">GitHub</div>
+          <div class="contact-item-value"><a href="#" style="color:#10B981">github.com/taskrift</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-card">
+      <h2>Send us a message</h2>
+      <p class="subtitle">Fill in the form below and we'll get back to you as soon as possible.</p>
+      <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Alex" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Johnson" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Topic</label>
+          <select id="subject" name="subject" required>
+            <option value="" disabled selected>Select a topic...</option>
+            <option value="general">General Enquiry</option>
+            <option value="support">Technical Support</option>
+            <option value="bug">Report a Bug</option>
+            <option value="feature">Feature Request</option>
+            <option value="billing">Billing &amp; Account</option>
+            <option value="privacy">Privacy &amp; Data Request</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what's on your mind — a bug you found, a feature you'd love, or just a hello..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Send Message
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+        <div class="form-success" id="formSuccess">✅ Message sent! We'll get back to you within 24 hours.</div>
+        <p class="form-note">By submitting this form, you agree to our <a href="privacy.html" style="color:#10B981">Privacy Policy</a>.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <p class="faq-sub">Quick answers to the questions we hear most often.</p>
+    <div class="faq-grid">
+      <div class="faq-item" id="faq1">
+        <button class="faq-question" onclick="toggleFaq('faq1')">
+          How do I organise my tasks into projects?
+          <div class="faq-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Creating a project in Taskrift takes just a few taps. From the sidebar, tap "+ New Project", give it a name, and choose a colour. Once created, any new task can be assigned to that project from the task creation screen. You can also move existing tasks between projects by tapping the task and editing its project field. Projects are colour-coded so you can identify them at a glance across your task list.</div>
+        </div>
+      </div>
+      <div class="faq-item" id="faq2">
+        <button class="faq-question" onclick="toggleFaq('faq2')">
+          Will I lose my tasks if I uninstall the app?
+          <div class="faq-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No — your tasks and projects are securely stored in the cloud via Firebase and linked to your account. When you reinstall Taskrift and log back in with the same account, everything will sync back automatically. We recommend always using an account rather than continuing as a guest, as guest data is stored locally only and may be lost on uninstall or device change.</div>
+        </div>
+      </div>
+      <div class="faq-item" id="faq3">
+        <button class="faq-question" onclick="toggleFaq('faq3')">
+          How do due date reminders work?
+          <div class="faq-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">When you set a due date on a task, Taskrift can send you a push notification reminder. By default, you'll get a reminder on the morning of the due date. You can customise when reminders fire (e.g., 1 day before, 2 hours before) in your account settings under Notifications. To receive reminders, you must grant Taskrift notification permissions in your device settings. You can opt out at any time.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom-simple">
+    <div class="footer-copy">© 2024 Taskrift. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(id){
+  var item=document.getElementById(id);
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(el){el.classList.remove('open');});
+  if(!isOpen)item.classList.add('open');
+}
+function handleSubmit(e){
+  e.preventDefault();
+  var form=document.getElementById('contactForm');
+  var success=document.getElementById('formSuccess');
+  var btn=form.querySelector('.form-submit');
+  btn.textContent='Sending...';
+  btn.disabled=true;
+  setTimeout(function(){
+    form.reset();
+    btn.textContent='Send Message';
+    btn.disabled=false;
+    success.style.display='block';
+    setTimeout(function(){success.style.display='none';},6000);
+  },1200);
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('nav')){
+    var m=document.querySelector('.mobile-menu');
+    if(m)m.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
