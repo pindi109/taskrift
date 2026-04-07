@@ -1,0 +1,29 @@
+{
+  "app_name": "Taskrift",
+  "app_name_slug": "taskrift",
+  "tagline": "Organize tasks. Own your day.",
+  "unique_accent": "#10B981",
+  "colour_palette": {
+    "background": "#0A0A0F",
+    "surface": "#18181B",
+    "primary": "#7C3AED",
+    "accent": "#10B981",
+    "textPrimary": "#FFFFFF",
+    "textSecondary": "#A1A1AA"
+  },
+  "brand_brief": "Taskrift is a focused, no-nonsense productivity tool built for individuals and small teams who want clarity without complexity. The brand feels sharp, calm, and empowering \u2014 like a quiet command centre for your work life. It targets ambitious professionals, indie hackers, and creators who value clean design and deep focus over bloated feature sets.",
+  "logo_prompt": "A minimal dark-mode logo for an app called Taskrift. The icon features a sleek lightning-bolt-shaped checkmark, subtly integrated into a rounded square tile. The checkmark strokes use a smooth gradient flowing from deep purple #7C3AED to emerald green #10B981, suggesting completion and momentum. The background of the tile is #18181B with a very subtle inner glow in purple. The overall aesthetic is clean, modern SaaS \u2014 no drop shadows, no gradients on the tile itself, just precise vector strokes. The wordmark beside it uses a geometric sans-serif typeface in white, with the letter R subtly styled to echo the bolt motif. Mood: focused, professional, minimal.",
+  "icon_style": "Minimal geometric checkmark-bolt fusion, purple-to-emerald gradient stroke on dark rounded tile",
+  "font_pairing": {
+    "heading": "Plus Jakarta Sans",
+    "body": "Inter"
+  },
+  "logo_generated": true,
+  "logo_variants": [
+    "C:\\Projects\\ai-app-builder\\generated_apps\\taskrift\\branding\\icon_512.png",
+    "C:\\Projects\\ai-app-builder\\generated_apps\\taskrift\\branding\\icon_192.png",
+    "C:\\Projects\\ai-app-builder\\generated_apps\\taskrift\\branding\\icon_180.png",
+    "C:\\Projects\\ai-app-builder\\generated_apps\\taskrift\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png",
+    "C:\\Projects\\ai-app-builder\\generated_apps\\taskrift\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-1024.png"
+  ]
+}
