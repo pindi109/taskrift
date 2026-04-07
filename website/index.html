@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taskrift — Organize tasks. Own your day.</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0A0A0F;color:#FFFFFF;font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #27272A}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-icon{width:36px;height:36px;background:#18181B;border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid #27272A}
+.nav-logo-icon svg{width:20px;height:20px}
+.nav-logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;color:#FFFFFF}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{color:#A1A1AA;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:#FFFFFF}
+.nav-cta{background:linear-gradient(135deg,#7C3AED,#3B82F6);color:#FFFFFF;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.9}
+.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#FFFFFF}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#0A0A0F;border-bottom:1px solid #27272A;padding:20px 24px;z-index:99;flex-direction:column;gap:16px}
+.mobile-menu a{color:#A1A1AA;font-size:15px;font-weight:500;padding:8px 0;border-bottom:1px solid #27272A}
+.mobile-menu .nav-cta{text-align:center;margin-top:8px}
+
+/* HERO */
+.hero{padding:140px 24px 100px;max-width:1200px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#18181B;border:1px solid #27272A;border-radius:100px;padding:6px 16px;margin-bottom:32px;font-size:13px;color:#A1A1AA}
+.hero-badge span{color:#10B981;font-weight:600}
+.hero h1{font-size:clamp(40px,7vw,80px);font-weight:800;line-height:1.1;letter-spacing:-2px;margin-bottom:24px}
+.hero h1 .gradient-text{background:linear-gradient(135deg,#7C3AED,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(16px,2.5vw,20px);color:#A1A1AA;max-width:560px;margin:0 auto 40px;line-height:1.7}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,#7C3AED,#3B82F6);color:#FFFFFF;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;transition:opacity 0.2s,transform 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{opacity:0.9;transform:translateY(-1px)}
+.btn-secondary{background:#18181B;color:#FFFFFF;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;border:1px solid #27272A;transition:border-color 0.2s,transform 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:#7C3AED;transform:translateY(-1px)}
+.hero-image{margin:64px auto 0;max-width:960px;background:#18181B;border:1px solid #27272A;border-radius:20px;padding:32px;position:relative;overflow:hidden}
+.hero-image::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(124,58,237,0.15) 0%,transparent 70%);pointer-events:none}
+.hero-app-mockup{background:#0A0A0F;border-radius:12px;padding:24px;min-height:400px;display:grid;grid-template-columns:220px 1fr;gap:16px}
+.mockup-sidebar{background:#18181B;border-radius:10px;padding:20px;border:1px solid #27272A}
+.mockup-sidebar-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#A1A1AA;margin-bottom:16px;font-weight:600}
+.mockup-project{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:13px;color:#A1A1AA;cursor:pointer;margin-bottom:4px;transition:background 0.15s}
+.mockup-project.active{background:rgba(124,58,237,0.15);color:#FFFFFF}
+.mockup-project-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.mockup-main{display:flex;flex-direction:column;gap:12px}
+.mockup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mockup-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;color:#FFFFFF}
+.mockup-add-btn{background:linear-gradient(135deg,#7C3AED,#10B981);color:#FFFFFF;border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer}
+.mockup-task{background:#18181B;border:1px solid #27272A;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.mockup-task.done{opacity:0.5}
+.mockup-check{width:18px;height:18px;border-radius:5px;border:2px solid #27272A;flex-shrink:0}
+.mockup-check.checked{background:linear-gradient(135deg,#7C3AED,#10B981);border:none;display:flex;align-items:center;justify-content:center}
+.mockup-check.checked::after{content:'✓';color:#fff;font-size:11px;font-weight:700}
+.mockup-task-text{flex:1;font-size:13px;color:#FFFFFF}
+.mockup-task.done .mockup-task-text{text-decoration:line-through;color:#A1A1AA}
+.mockup-due{font-size:11px;color:#A1A1AA;background:#0A0A0F;padding:3px 8px;border-radius:6px}
+.mockup-due.urgent{color:#EF4444;background:rgba(239,68,68,0.1)}
+
+/* FEATURES */
+.features{padding:100px 24px;max-width:1200px;margin:0 auto}
+.section-label{font-size:13px;font-weight:600;color:#10B981;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;text-align:center}
+.section-title{font-size:clamp(28px,4vw,48px);font-weight:800;text-align:center;margin-bottom:16px;letter-spacing:-1px}
+.section-sub{color:#A1A1AA;text-align:center;font-size:16px;max-width:520px;margin:0 auto 64px}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.feature-card{background:#18181B;border:1px solid #27272A;border-radius:16px;padding:32px;transition:border-color 0.2s,transform 0.2s}
+.feature-card:hover{border-color:#7C3AED;transform:translateY(-3px)}
+.feature-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+.feature-icon.purple{background:rgba(124,58,237,0.15)}
+.feature-icon.emerald{background:rgba(16,185,129,0.15)}
+.feature-icon.blue{background:rgba(59,130,246,0.15)}
+.feature-icon.orange{background:rgba(249,115,22,0.15)}
+.feature-card h3{font-size:18px;font-weight:700;margin-bottom:10px}
+.feature-card p{color:#A1A1AA;font-size:14px;line-height:1.7}
+
+/* SOCIAL PROOF */
+.social-proof{padding:80px 24px;background:#18181B;border-top:1px solid #27272A;border-bottom:1px solid #27272A}
+.social-proof-inner{max-width:1200px;margin:0 auto}
+.proof-header{text-align:center;margin-bottom:48px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;margin-bottom:64px}
+.stat-item{text-align:center}
+.stat-number{font-family:'Plus Jakarta Sans',sans-serif;font-size:40px;font-weight:800;background:linear-gradient(135deg,#7C3AED,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
+.stat-label{color:#A1A1AA;font-size:14px}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.testimonial-card{background:#0A0A0F;border:1px solid #27272A;border-radius:14px;padding:24px}
+.testimonial-stars{color:#10B981;font-size:14px;margin-bottom:12px}
+.testimonial-text{color:#A1A1AA;font-size:14px;line-height:1.7;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#10B981);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#FFFFFF}
+.testimonial-name{font-size:13px;font-weight:600;color:#FFFFFF}
+.testimonial-role{font-size:12px;color:#A1A1AA}
+.tech-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:32px;margin-top:48px}
+.tech-badge{display:flex;align-items:center;gap:8px;background:#0A0A0F;border:1px solid #27272A;border-radius:100px;padding:8px 18px;font-size:13px;color:#A1A1AA}
+.tech-badge-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#10B981)}
+
+/* CTA BANNER */
+.cta-banner{padding:100px 24px}
+.cta-banner-inner{max-width:900px;margin:0 auto;background:linear-gradient(135deg,#7C3AED,#3B82F6);border-radius:24px;padding:64px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-banner-inner::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:rgba(255,255,255,0.05);border-radius:50%}
+.cta-banner-inner::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:rgba(255,255,255,0.05);border-radius:50%}
+.cta-banner h2{font-size:clamp(28px,4vw,44px);font-weight:800;margin-bottom:16px;letter-spacing:-1px;position:relative}
+.cta-banner p{color:rgba(255,255,255,0.8);font-size:16px;margin-bottom:36px;position:relative}
+.cta-banner-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative}
+.btn-white{background:#FFFFFF;color:#7C3AED;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;transition:opacity 0.2s,transform 0.2s}
+.btn-white:hover{opacity:0.95;transform:translateY(-1px)}
+.btn-ghost-white{background:transparent;color:#FFFFFF;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;border:2px solid rgba(255,255,255,0.4);transition:border-color 0.2s,transform 0.2s}
+.btn-ghost-white:hover{border-color:#FFFFFF;transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:#18181B;border-top:1px solid #27272A;padding:60px 24px 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:48px;margin-bottom:48px}
+.footer-brand p{color:#A1A1AA;font-size:14px;line-height:1.7;margin-top:12px;max-width:240px}
+.footer-col h4{font-size:13px;font-weight:600;color:#FFFFFF;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
+.footer-col a{display:block;color:#A1A1AA;font-size:14px;margin-bottom:10px;transition:color 0.2s}
+.footer-col a:hover{color:#FFFFFF}
+.footer-bottom{border-top:1px solid #27272A;padding-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap}
+.footer-copy{color:#A1A1AA;font-size:13px}
+.footer-socials{display:flex;gap:16px}
+.social-link{width:36px;height:36px;background:#0A0A0F;border:1px solid #27272A;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#A1A1AA;transition:border-color 0.2s,color 0.2s}
+.social-link:hover{border-color:#7C3AED;color:#FFFFFF}
+
+@media(max-width:768px){
+.nav-links{display:none}
+.nav-mobile-toggle{display:block}
+.mobile-menu.open{display:flex}
+.hero-app-mockup{grid-template-columns:1fr}
+.mockup-sidebar{display:none}
+.footer-top{grid-template-columns:1fr 1fr}
+.footer-brand{grid-column:1/-1}
+}
+@media(max-width:480px){
+.footer-top{grid-template-columns:1fr}
+.footer-bottom{flex-direction:column;gap:16px;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs>
+          <path d="M4 10.5L8 15L16 5" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Taskrift</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Get Started</a>
+    </div>
+    <button class="nav-mobile-toggle" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#features">Features</a>
+  <a href="#pricing">Pricing</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta">Get Started</a>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="hero-badge">✦ <span>Now in public beta</span> — Free to try, no card needed</div>
+    <h1>Organize tasks.<br><span class="gradient-text">Own your day.</span></h1>
+    <p>Taskrift is the clean, focused task manager for ambitious professionals. Create tasks, set due dates, and organise everything into projects — without the noise.</p>
+    <div class="hero-ctas">
+      <a href="contact.html" class="btn-primary">Get Started Free <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#features" class="btn-secondary">See Features</a>
+    </div>
+    <div class="hero-image">
+      <div class="hero-app-mockup">
+        <div class="mockup-sidebar">
+          <div class="mockup-sidebar-title">Projects</div>
+          <div class="mockup-project active">
+            <div class="mockup-project-dot" style="background:#7C3AED"></div>
+            All Tasks
+          </div>
+          <div class="mockup-project">
+            <div class="mockup-project-dot" style="background:#10B981"></div>
+            Work
+          </div>
+          <div class="mockup-project">
+            <div class="mockup-project-dot" style="background:#3B82F6"></div>
+            Personal
+          </div>
+          <div class="mockup-project">
+            <div class="mockup-project-dot" style="background:#F59E0B"></div>
+            Side Project
+          </div>
+          <div class="mockup-project">
+            <div class="mockup-project-dot" style="background:#EF4444"></div>
+            Urgent
+          </div>
+        </div>
+        <div class="mockup-main">
+          <div class="mockup-header">
+            <div class="mockup-title">All Tasks</div>
+            <div class="mockup-add-btn">+ Add Task</div>
+          </div>
+          <div class="mockup-task">
+            <div class="mockup-check checked"></div>
+            <div class="mockup-task-text">Review product roadmap</div>
+            <div class="mockup-due">Today</div>
+          </div>
+          <div class="mockup-task done">
+            <div class="mockup-check checked"></div>
+            <div class="mockup-task-text">Send weekly update email</div>
+            <div class="mockup-due">Done</div>
+          </div>
+          <div class="mockup-task">
+            <div class="mockup-check"></div>
+            <div class="mockup-task-text">Design new onboarding flow</div>
+            <div class="mockup-due urgent">Tomorrow</div>
+          </div>
+          <div class="mockup-task">
+            <div class="mockup-check"></div>
+            <div class="mockup-task-text">Write launch announcement</div>
+            <div class="mockup-due">Mar 28</div>
+          </div>
+          <div class="mockup-task">
+            <div class="mockup-check"></div>
+            <div class="mockup-task-text">Set up CI/CD pipeline</div>
+            <div class="mockup-due">Apr 1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+    <p class="section-sub">Taskrift keeps your workflow lean and focused, so you can spend less time managing and more time doing.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon purple">✅</div>
+        <h3>Smart Task Creation</h3>
+        <p>Create tasks in seconds. Add titles, notes, due dates, and priorities with a minimal interface that gets out of your way.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon emerald">📁</div>
+        <h3>Project Organisation</h3>
+        <p>Group tasks into colour-coded projects for work, personal life, or side hustles. Switch contexts instantly without losing focus.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon blue">📅</div>
+        <h3>Due Dates & Reminders</h3>
+        <p>Set due dates on any task and get gentle reminders so nothing slips through the cracks. See what's due today at a glance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon orange">⚡</div>
+        <h3>Instant Completion</h3>
+        <p>Mark tasks complete with one tap. Celebrate your momentum as your list clears and your progress becomes visible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-proof">
+    <div class="social-proof-inner">
+      <div class="proof-header">
+        <div class="section-label">Loved by makers</div>
+        <h2 class="section-title">Built for people who ship.</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-number">10k+</div><div class="stat-label">Active Users</div></div>
+        <div class="stat-item"><div class="stat-number">2M+</div><div class="stat-label">Tasks Created</div></div>
+        <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+        <div class="stat-item"><div class="stat-number">4.9★</div><div class="stat-label">App Store Rating</div></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Finally a task manager that doesn't overwhelm me. Taskrift is the only app I've stuck with for longer than a week. The project view is chef's kiss."</p>
+          <div class="testimonial-author"><div class="testimonial-avatar">JK</div><div><div class="testimonial-name">Jamie K.</div><div class="testimonial-role">Indie Hacker</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"I manage three clients and my own projects. Taskrift keeps everything clean and separated. The due date view saves me every week."</p>
+          <div class="testimonial-author"><div class="testimonial-avatar">SR</div><div><div class="testimonial-name">Sara R.</div><div class="testimonial-role">Freelance Designer</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Switched from Notion and never looked back. Taskrift loads instantly, feels native, and doesn't try to be everything. Highly recommend."</p>
+          <div class="testimonial-author"><div class="testimonial-avatar">MT</div><div><div class="testimonial-name">Marcus T.</div><div class="testimonial-role">Startup Founder</div></div></div>
+        </div>
+      </div>
+      <div class="tech-row">
+        <div class="tech-badge"><div class="tech-badge-dot"></div>Built with Flutter</div>
+        <div class="tech-badge"><div class="tech-badge-dot"></div>Firebase Sync</div>
+        <div class="tech-badge"><div class="tech-badge-dot"></div>End-to-End Secure</div>
+        <div class="tech-badge"><div class="tech-badge-dot"></div>Offline First</div>
+        <div class="tech-badge"><div class="tech-badge-dot"></div>iOS &amp; Android</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner" id="pricing">
+    <div class="cta-banner-inner">
+      <h2>Start organising your day.<br>It's free.</h2>
+      <p>No credit card required. Get full access and own your productivity from day one.</p>
+      <div class="cta-banner-btns">
+        <a href="contact.html" class="btn-white">Download Now — Free</a>
+        <a href="contact.html" class="btn-ghost-white">Learn More</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:0">
+          <div class="nav-logo-icon">
+            <svg viewBox="0 0 20 20" fill="none"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs><path d="M4 10.5L8 15L16 5" stroke="url(#lg2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="nav-logo-text">Taskrift</span>
+        </a>
+        <p>A focused task manager for ambitious professionals who value clarity without complexity.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="contact.html">Download</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="contact.html">Help Centre</a>
+        <a href="contact.html">FAQs</a>
+        <a href="contact.html">Report a Bug</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Taskrift. All rights reserved.</div>
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="Twitter">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.629zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener('click',function(e){
+  if(!e.target.closest('nav')){
+    var m=document.querySelector('.mobile-menu');
+    if(m)m.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
