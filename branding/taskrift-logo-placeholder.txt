@@ -1,0 +1,3 @@
+Logo prompt: A minimal dark-mode logo for an app called Taskrift. The icon features a sleek lightning-bolt-shaped checkmark, subtly integrated into a rounded square tile. The checkmark strokes use a smooth gradient flowing from deep purple #7C3AED to emerald green #10B981, suggesting completion and momentum. The background of the tile is #18181B with a very subtle inner glow in purple. The overall aesthetic is clean, modern SaaS — no drop shadows, no gradients on the tile itself, just precise vector strokes. The wordmark beside it uses a geometric sans-serif typeface in white, with the letter R subtly styled to echo the bolt motif. Mood: focused, professional, minimal.
+
+Replace this file with the generated logo image.
