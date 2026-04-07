@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Conditions — Taskrift</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0A0A0F;color:#FFFFFF;font-family:'Inter',sans-serif;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif}
+a{text-decoration:none;color:inherit}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #27272A}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-icon{width:36px;height:36px;background:#18181B;border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid #27272A}
+.nav-logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:18px;color:#FFFFFF}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{color:#A1A1AA;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:#FFFFFF}
+.nav-cta{background:linear-gradient(135deg,#7C3AED,#3B82F6);color:#FFFFFF;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600}
+.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#FFFFFF}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#0A0A0F;border-bottom:1px solid #27272A;padding:20px 24px;z-index:99;flex-direction:column;gap:16px}
+.mobile-menu a{color:#A1A1AA;font-size:15px;font-weight:500;padding:8px 0;border-bottom:1px solid #27272A}
+.mobile-menu .nav-cta{text-align:center;margin-top:8px}
+
+.page-header{padding:120px 24px 60px;text-align:center;border-bottom:1px solid #27272A}
+.page-header .badge{display:inline-flex;align-items:center;gap:8px;background:#18181B;border:1px solid #27272A;border-radius:100px;padding:6px 16px;margin-bottom:24px;font-size:13px;color:#A1A1AA}
+.page-header h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px}
+.page-header p{color:#A1A1AA;font-size:16px}
+
+.content-wrapper{max-width:800px;margin:0 auto;padding:60px 24px 100px}
+.toc{background:#18181B;border:1px solid #27272A;border-radius:14px;padding:28px;margin-bottom:48px}
+.toc h3{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#A1A1AA;margin-bottom:16px}
+.toc ol{padding-left:20px}
+.toc li{margin-bottom:8px}
+.toc a{color:#7C3AED;font-size:14px;transition:color 0.2s}
+.toc a:hover{color:#10B981}
+
+.policy-section{margin-bottom:48px}
+.policy-section h2{font-size:22px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #27272A;color:#FFFFFF}
+.policy-section h3{font-size:17px;font-weight:600;margin:20px 0 10px;color:#FFFFFF}
+.policy-section p{color:#A1A1AA;font-size:15px;margin-bottom:14px;line-height:1.8}
+.policy-section ul,.policy-section ol{padding-left:22px;margin-bottom:14px}
+.policy-section li{color:#A1A1AA;font-size:15px;margin-bottom:8px;line-height:1.8}
+.policy-section li strong{color:#FFFFFF}
+.highlight-box{background:#18181B;border:1px solid #27272A;border-left:3px solid #7C3AED;border-radius:8px;padding:20px 24px;margin:20px 0}
+.highlight-box p{color:#A1A1AA;font-size:14px;margin:0}
+.warning-box{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:20px 24px;margin:20px 0}
+.warning-box p{color:#A1A1AA;font-size:14px;margin:0}
+.email-link{color:#10B981;text-decoration:none}
+.email-link:hover{text-decoration:underline}
+
+footer{background:#18181B;border-top:1px solid #27272A;padding:40px 24px}
+.footer-bottom-simple{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-copy{color:#A1A1AA;font-size:13px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:#A1A1AA;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:#FFFFFF}
+
+@media(max-width:768px){
+.nav-links{display:none}
+.nav-mobile-toggle{display:block}
+.mobile-menu.open{display:flex}
+.footer-bottom-simple{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs><path d="M4 10.5L8 15L16 5" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="nav-logo-text">Taskrift</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Get Started</a>
+    </div>
+    <button class="nav-mobile-toggle" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html#features">Features</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta">Get Started</a>
+</div>
+
+<div class="page-header">
+  <div class="badge">📋 Legal</div>
+  <h1>Terms &amp; Conditions</h1>
+  <p>Last updated: 1 January 2024 · Governing law: England &amp; Wales</p>
+</div>
+
+<div class="content-wrapper">
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#app-usage">App Usage &amp; Your Account</a></li>
+      <li><a href="#acceptable-use">Acceptable Use Policy</a></li>
+      <li><a href="#prohibited">Prohibited Conduct</a></li>
+      <li><a href="#ip">Intellectual Property</a></li>
+      <li><a href="#user-content">User-Generated Content</a></li>
+      <li><a href="#free-premium">Free &amp; Premium Plans</a></li>
+      <li><a href="#disclaimers">Disclaimers &amp; Warranties</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#indemnification">Indemnification</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#third-party">Third-Party Services</a></li>
+      <li><a href="#changes">Changes to Terms</a></li>
+      <li><a href="#governing-law">Governing Law &amp; Disputes</a></li>
+      <li><a href="#contact-legal">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="highlight-box">
+    <p>Please read these Terms &amp; Conditions carefully before using Taskrift. By creating an account or using the app, you agree to be bound by these terms. If you do not agree, please do not use Taskrift.</p>
+  </div>
+
+  <div class="policy-section" id="acceptance">
+    <h2>1. Acceptance of Terms</h2>
+    <p>These Terms &amp; Conditions ("Terms") constitute a legally binding agreement between you ("User", "you") and Taskrift ("we", "us", "our") governing your access to and use of the Taskrift mobile application, website, and related services (collectively, the "Service").</p>
+    <p>By downloading, installing, registering for, or using Taskrift, you confirm that you are at least 13 years of age (or 16 in the EEA where applicable), have read and understood these Terms, and agree to be bound by them and our Privacy Policy.</p>
+    <p>If you are using Taskrift on behalf of an organisation, you represent that you have authority to bind that organisation to these Terms.</p>
+  </div>
+
+  <div class="policy-section" id="app-usage">
+    <h2>2. App Usage &amp; Your Account</h2>
+    <h3>2.1 Account Registration</h3>
+    <p>To use Taskrift, you must create an account using a valid email address. You are responsible for maintaining the confidentiality of your credentials and for all activity that occurs under your account.</p>
+    <h3>2.2 Account Accuracy</h3>
+    <p>You agree to provide accurate, current, and complete information during registration and to update it as necessary. You may not impersonate any other person or use a name you are not entitled to use.</p>
+    <h3>2.3 Account Security</h3>
+    <p>You must notify us immediately at <a href="mailto:security@taskrift.app" class="email-link">security@taskrift.app</a> if you suspect any unauthorised use of your account. We are not liable for losses caused by unauthorised account access where you have failed to keep your credentials secure.</p>
+    <h3>2.4 One Account Per Person</h3>
+    <p>Personal accounts are for individual use. You may not share your account credentials with others or create multiple accounts to circumvent any limitations.</p>
+  </div>
+
+  <div class="policy-section" id="acceptable-use">
+    <h2>3. Acceptable Use Policy</h2>
+    <p>Taskrift is a task management tool designed for personal and professional productivity. You may use the Service to:</p>
+    <ul>
+      <li>Create, edit, organise, and complete personal and professional tasks.</li>
+      <li>Create and manage projects and organise tasks within them.</li>
+      <li>Set due dates and receive reminders for tasks.</li>
+      <li>Sync your data across your own devices.</li>
+    </ul>
+    <p>You must use the Service only for lawful purposes and in a manner consistent with all applicable local, national, and international laws and regulations.</p>
+  </div>
+
+  <div class="policy-section" id="prohibited">
+    <h2>4. Prohibited Conduct</h2>
+    <p>You must not use Taskrift to:</p>
+    <ul>
+      <li>Upload, store, or transmit any content that is unlawful, harmful, threatening, abusive, defamatory, or otherwise objectionable.</li>
+      <li>Attempt to gain unauthorised access to our systems, databases, or other users' accounts.</li>
+      <li>Reverse engineer, decompile, disassemble, or attempt to derive source code from the app.</li>
+      <li>Use automated tools (bots, scrapers, crawlers) to access or extract data from the Service.</li>
+      <li>Introduce viruses, malware, or any other harmful code.</li>
+      <li>Overload, impair, or disrupt the Service infrastructure.</li>
+      <li>Resell, sublicense, or commercially exploit the Service without our express written consent.</li>
+      <li>Misrepresent your identity or affiliation with any person or organisation.</li>
+      <li>Use the Service to store or process sensitive personal data of third parties without appropriate legal basis.</li>
+    </ul>
+    <div class="warning-box">
+      <p>Violation of these prohibitions may result in immediate account termination and, where appropriate, referral to law enforcement authorities.</p>
+    </div>
+  </div>
+
+  <div class="policy-section" id="ip">
+    <h2>5. Intellectual Property</h2>
+    <h3>5.1 Our IP</h3>
+    <p>Taskrift and all its content, features, and functionality — including but not limited to the software, UI design, graphics, logos, and trademarks — are owned by Taskrift and protected by copyright, trademark, and other intellectual property laws. All rights are reserved.</p>
+    <h3>5.2 Limited Licence</h3>
+    <p>We grant you a non-exclusive, non-transferable, revocable, limited licence to use the Taskrift app for personal and internal business purposes, subject to these Terms. This licence does not include any right to copy, modify, distribute, sell, or create derivative works of the Service.</p>
+    <h3>5.3 Feedback</h3>
+    <p>If you provide feedback, suggestions, or ideas about Taskrift, you grant us a perpetual, royalty-free, irrevocable licence to use that feedback in any way without obligation to you.</p>
+  </div>
+
+  <div class="policy-section" id="user-content">
+    <h2>6. User-Generated Content</h2>
+    <p>All tasks, project names, notes, and other content you create within Taskrift ("User Content") remain your property. By using the Service, you grant us a limited licence to store, process, and display your User Content solely to provide the Service to you.</p>
+    <p>You represent and warrant that your User Content does not violate any third-party intellectual property rights or applicable law. You are solely responsible for all User Content you create within Taskrift.</p>
+  </div>
+
+  <div class="policy-section" id="free-premium">
+    <h2>7. Free &amp; Premium Plans</h2>
+    <h3>7.1 Free Plan</h3>
+    <p>Taskrift offers a free tier with core task management features. We reserve the right to modify the features available on the free plan at any time with reasonable notice.</p>
+    <h3>7.2 Premium Plans</h3>
+    <p>Premium features, if offered, are subject to additional pricing terms presented at the point of purchase. All fees are exclusive of applicable taxes. Subscriptions automatically renew unless cancelled before the renewal date.</p>
+    <h3>7.3 Refunds</h3>
+    <p>Refunds for premium subscriptions are handled in accordance with the Apple App Store or Google Play Store refund policies, as applicable. We do not directly process refunds for in-app purchases.</p>
+  </div>
+
+  <div class="policy-section" id="disclaimers">
+    <h2>8. Disclaimers &amp; Warranties</h2>
+    <p>TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, TASKRIFT IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.</p>
+    <p>WE DO NOT WARRANT THAT:</p>
+    <ul>
+      <li>The Service will be uninterrupted, error-free, or secure.</li>
+      <li>Any errors or defects will be corrected.</li>
+      <li>The Service will meet your specific requirements or expectations.</li>
+      <li>Data stored in the Service will not be lost (we recommend keeping your own backups of critical information).</li>
+    </ul>
+    <p>Nothing in these Terms excludes or limits our liability for death or personal injury caused by our negligence, fraud, or fraudulent misrepresentation, or any other liability that cannot be excluded under English law.</p>
+  </div>
+
+  <div class="policy-section" id="liability">
+    <h2>9. Limitation of Liability</h2>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, TASKRIFT SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</p>
+    <ul>
+      <li>Loss of profits, revenue, or business opportunities.</li>
+      <li>Loss of data or inability to access your tasks or projects.</li>
+      <li>Missed deadlines or business losses arising from reliance on the Service.</li>
+      <li>Unauthorised access to your account or data.</li>
+    </ul>
+    <p>In no event shall our total aggregate liability to you exceed the greater of: (a) the amount you paid to us in the 12 months preceding the claim, or (b) £50 GBP.</p>
+    <p>These limitations apply regardless of the legal theory on which the claim is based and even if we have been advised of the possibility of such damages.</p>
+  </div>
+
+  <div class="policy-section" id="indemnification">
+    <h2>10. Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless Taskrift, its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising from or relating to:</p>
+    <ul>
+      <li>Your use of the Service in violation of these Terms.</li>
+      <li>Your User Content.</li>
+      <li>Your violation of any third-party rights.</li>
+      <li>Your violation of applicable law.</li>
+    </ul>
+  </div>
+
+  <div class="policy-section" id="termination">
+    <h2>11. Termination</h2>
+    <h3>11.1 By You</h3>
+    <p>You may delete your account at any time through the app settings. Upon deletion, your task and project data will be permanently removed within 30 days in accordance with our Privacy Policy.</p>
+    <h3>11.2 By Us</h3>
+    <p>We reserve the right to suspend or terminate your account at any time, with or without notice, if we reasonably believe you have violated these Terms, for extended inactivity, or if required by law.</p>
+    <h3>11.3 Effect of Termination</h3>
+    <p>Upon termination, your licence to use the Service immediately ceases. Provisions that by their nature should survive termination (including IP, disclaimers, liability, and governing law) shall survive.</p>
+  </div>
+
+  <div class="policy-section" id="third-party">
+    <h2>12. Third-Party Services</h2>
+    <p>Taskrift integrates with third-party services (e.g., Firebase, Apple, Google) to deliver its functionality. We are not responsible for the content, policies, or practices of these third parties. Your use of such services is governed by their respective terms and privacy policies.</p>
+    <p>Links to third-party websites or services do not imply our endorsement.</p>
+  </div>
+
+  <div class="policy-section" id="changes">
+    <h2>13. Changes to Terms</h2>
+    <p>We may update these Terms from time to time. We will notify you of material changes via email or in-app notification at least 14 days before they take effect. Your continued use of Taskrift after the effective date constitutes acceptance of the revised Terms. If you do not agree to the new Terms, you must stop using the Service and delete your account.</p>
+  </div>
+
+  <div class="policy-section" id="governing-law">
+    <h2>14. Governing Law &amp; Disputes</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of <strong>England and Wales</strong>, without regard to conflict of law principles.</p>
+    <p>Any dispute arising out of or in connection with these Terms shall first be attempted to be resolved through good-faith negotiation. If not resolved within 30 days, disputes shall be subject to the exclusive jurisdiction of the courts of <strong>England and Wales</strong>.</p>
+    <p>If you are a consumer in the European Union, you may also have access to alternative dispute resolution mechanisms provided by your local consumer protection authorities or the EU Online Dispute Resolution platform at <a href="https://ec.europa.eu/consumers/odr" class="email-link" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+    <p>Nothing in this clause affects your statutory rights as a consumer under applicable UK or EU consumer protection law.</p>
+  </div>
+
+  <div class="policy-section" id="contact-legal">
+    <h2>15. Contact</h2>
+    <p>For questions about these Terms or to report a violation:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:legal@taskrift.app" class="email-link">legal@taskrift.app</a></li>
+      <li><strong>General enquiries:</strong> <a href="contact.html" class="email-link">Contact page</a></li>
+      <li><strong>Response time:</strong> Within 5 business days</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom-simple">
+    <div class="footer-copy">© 2024 Taskrift. All rights reserved. Governed by the laws of England &amp; Wales.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
